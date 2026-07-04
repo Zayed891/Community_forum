@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "@/lib/i18n/context";
 import { UserSwitcher } from "./UserSwitcher";
+import { LocaleSwitcher } from "./LocaleSwitcher";
 
 export function NavBar() {
   const { t } = useTranslations();
@@ -32,6 +33,7 @@ export function NavBar() {
         <div className="flex items-center gap-2">
           <div className="hidden items-center gap-2 md:flex">
             <UserSwitcher />
+            <LocaleSwitcher />
           </div>
 
           <div className="relative md:hidden">
@@ -47,8 +49,9 @@ export function NavBar() {
               </svg>
             </button>
             {menuOpen && (
-              <div className="absolute right-0 z-10 mt-2 flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 shadow-lg">
+              <div className="absolute end-0 z-10 mt-2 flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 shadow-lg">
                 <UserSwitcher />
+                <LocaleSwitcher />
               </div>
             )}
           </div>

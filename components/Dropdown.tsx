@@ -48,7 +48,7 @@ export function Dropdown<T extends string | number>({
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex w-full cursor-pointer items-center gap-2 rounded-full border border-gray-200 px-3 py-1.5 text-left text-sm text-gray-500"
+        className="flex w-full cursor-pointer items-center gap-2 rounded-full border border-gray-200 px-3 py-1.5 text-start text-sm text-gray-500"
       >
         {prefix && <span className="shrink-0">{prefix}</span>}
         <span className="truncate font-medium text-gray-900">{selected?.label}</span>
@@ -61,7 +61,7 @@ export function Dropdown<T extends string | number>({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="ml-auto shrink-0 text-gray-400"
+          className="ms-auto shrink-0 text-gray-400"
         >
           <path d="m6 9 6 6 6-6" />
         </svg>
@@ -82,7 +82,7 @@ export function Dropdown<T extends string | number>({
                   onChange(opt.value);
                   setOpen(false);
                 }}
-                className={`flex w-full cursor-pointer items-center justify-between gap-4 px-3 py-2 text-left text-sm whitespace-nowrap hover:bg-brand-light ${
+                className={`flex w-full cursor-pointer items-center justify-between gap-4 px-3 py-2 text-start text-sm whitespace-nowrap hover:bg-brand-light ${
                   opt.value === value ? "font-semibold text-brand-dark" : "text-gray-700"
                 }`}
               >

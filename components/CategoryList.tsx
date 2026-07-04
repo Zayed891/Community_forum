@@ -63,7 +63,7 @@ function CategoryRow({
     <div className="flex items-start gap-4 border-b border-gray-100 px-4 py-5 last:border-0 sm:items-center">
       <button
         onClick={() => onSelect(course.id)}
-        className="flex flex-1 cursor-pointer items-start gap-4 text-left"
+        className="flex flex-1 cursor-pointer items-start gap-4 text-start"
       >
         <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${style.bg}`}>
           <Icon className={`h-5 w-5 ${style.fg}`} />

@@ -38,7 +38,7 @@ export default function FeedPage() {
         onClick={() => setSelectedCourseId(null)}
         className="flex w-fit cursor-pointer items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-gray-900"
       >
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="rtl:-scale-x-100">
           <path d="M15 18l-6-6 6-6" />
         </svg>
         {t("feed.back")}

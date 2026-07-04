@@ -92,9 +92,17 @@ surface (see `app/api/users/route.ts`'s comment).
   affected cache entry.** Simpler and less bug-prone than manually keeping N cache
   entries in sync; costs one extra background request per save/un-save.
 - **i18n is a small hand-rolled catalog + `Intl.PluralRules`**, not a full library
-  (next-intl, etc.). The requirement is "message catalog, 2 locales, correct
-  pluralization" — `Intl.PluralRules` gets pluralization right per-locale without
-  pulling in routing/middleware machinery a library would add.
+  (next-intl, etc.). The requirement is "message catalog, at least 2 locales,
+  correct pluralization" — three locales are implemented (`en`, `es`, `ar`,
+  see `lib/i18n/`), with Arabic specifically chosen to exercise
+  `Intl.PluralRules`'s full six plural categories (zero/one/two/few/many/other),
+  not just English/Spanish's one/other split — no extra logic needed, the API
+  gets it right per-locale. Arabic also required actual RTL layout support, not
+  just translated strings: `LocaleProvider` (`lib/i18n/context.tsx`) sets
+  `document.documentElement.dir`/`lang` on locale change, and components use
+  Tailwind's logical direction classes (`text-start`, `ms-auto`, `end-0`,
+  `rtl:` variant) instead of physical ones (`text-left`, `ml-auto`, `right-0`)
+  so layout mirrors correctly.
 - **Course/user switchers are dropdowns, not real navigation/auth.** Acceptable
   per "please don't build a full identity/login system."
 
