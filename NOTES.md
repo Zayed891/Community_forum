@@ -73,7 +73,10 @@ surface (see `app/api/users/route.ts`'s comment).
 - **Pagination is offset/limit, not cursor-based.** Simpler to implement and test
   correctly in the time available; fine at this data scale. A cursor
   (`created_at`+`id`) would be the production choice to avoid skip/duplicate rows
-  under concurrent inserts.
+  under concurrent inserts. The API supported `limit`/`offset` from the start, but
+  the frontend originally never requested more than the first page — fixed by
+  switching `useFeed`/`useSavedList` to React Query's `useInfiniteQuery`
+  (`lib/hooks.ts`) with a "Load more" button (`components/LoadMoreButton.tsx`).
 - **No optimistic-lock / retry-on-conflict for the `create` race.** Two concurrent
   first-time saves from the same user could theoretically both read "no existing
   row" and both attempt to insert. This was noted as a moot risk back when the
